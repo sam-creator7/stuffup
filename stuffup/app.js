@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth-route.js');
 const profileRoutes = require('./routes/profile-routes.js');
 const passportSetup =require('./config/passport-setup');
-const keys = require('./config/keys');
+
 var cookieParser = require('cookie-parser');
 var session = require('express-session');//
 var crypto = require('crypto');
@@ -19,10 +19,12 @@ const passport = require('passport');
 const Ordermodel = require('./model/order-model');
 var Customermodel = require('./model/customermodel.js');
 const FeedbackModel = require('./model/feedback.js');
-const Keysmodel = require('./model/keysmodel.js');
+
+require('dotenv').config();
 //load and intialize MessageBird SDK
 //var messageBird = require('messagebird')('DGCJwCpUZPwVMdp1HdxEL5cFQ');
 
+console.log(process.env);
 
 var app = express();
 
@@ -31,12 +33,12 @@ var app = express();
 
 /*app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
-  keys:[keys.session.cookiekey]
+  process.env:[process.env.session.cookiekey]
 }));*/
 app.use(cookieParser());//
 app.use(cookieSession({//
     key: 'user_sid',
-    secret: keys.session.cookiekey,
+    secret: process.env.cookiekey,
     httpOnly: true,
     resave: false,
     saveUninitialized: false,
@@ -67,7 +69,7 @@ app.use(passport.session());
 var urlencoder = bodyParser.urlencoded({extended: false});
 
 //connect to database
-mongoose.connect(keys.mongodb.dbURI);
+mongoose.connect(process.env.dbURI);
 
 //set up routes
 app.use('/auth',authRoutes);
@@ -262,7 +264,7 @@ app.post('/forgot',urlencoder,function(req,res,next){
         service: 'Gmail',
         auth:{
           user: 'stuffup.in@gmail.com',
-          pass: keys.gmailpw.GMAILPW
+          pass: process.env.GMAILPW
         },
         tls: {
     // do not fail on invalid certs
@@ -340,7 +342,7 @@ app.post('/reset/:token',urlencoder,function (req,res) {
         service: 'Gmail',
         auth:{
           user: 'stuffup.in@gmail.com',
-          pass: keys.gmailpw.GMAILPW
+          pass: process.env.GMAILPW
         },  tls: {
       // do not fail on invalid certs
       rejectUnauthorized: false
