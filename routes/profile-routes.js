@@ -17,6 +17,13 @@ router.get('/home',function(req,res){
 });
 
 
+app.get('/list',function (req,res) {
+  res.render('listpage',{user:req.user,userinfo:req.session.user});
+});
+
+app.get('/confirmation',function (req,res) {
+  res.render('confirmation',{user:req.user,userinfo:req.session.user});
+});
 
 
 router.get('/dashboard',function (req,res) {
