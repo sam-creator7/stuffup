@@ -122,6 +122,15 @@ app.get('/home',function(req,res){
 });
 
 
+app.get('/',function(req,res){
+  console.log('Manual login');
+  console.log(req.session.user);
+  console.log('Google login');
+  console.log('this'+req.user);
+  res.render('home',{user:req.user,userinfo:req.session.user});
+});
+
+
 
 
 
