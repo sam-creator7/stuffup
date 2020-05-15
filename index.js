@@ -80,8 +80,6 @@ app.use('/profile',profileRoutes);
 
 
 
-
-
 var imgPath = './public/images/iconlist.png';
 
 //saving_dummy_data.order_company_img.data = fs.readFileSync(imgPath);
