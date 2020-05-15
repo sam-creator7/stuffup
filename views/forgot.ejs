@@ -12,21 +12,7 @@
 <link rel="stylesheet" type="text/css" href="/public/assets/login.css">
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
-<script>
-$.ajax({
-url: 'your-heroku.com',
-type: 'POST',
-headers: {'Accept': 'application/json;'},
-data: {
-"subject": "subject",
-"message": "some body text"
-},
-}).done(function (res) {
-  console.log(res); // it shows your email sent message.
-});
 
-
-</script>
 <div class="row">
   <div class="col-md-12">
     <form  action="/forgot" method="post">
