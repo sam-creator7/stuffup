@@ -69,7 +69,7 @@ app.use(passport.session());
 var urlencoder = bodyParser.urlencoded({extended: false});
 
 //connect to database
-mongoose.connect(process.env.dbURI);
+mongoose.connect(process.env.dbURI,{ useNewUrlParser: true });
 
 //set up routes
 app.use('/auth',authRoutes);
