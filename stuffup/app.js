@@ -263,7 +263,11 @@ app.post('/forgot',urlencoder,function(req,res,next){
         auth:{
           user: 'stuffup.in@gmail.com',
           pass: keys.gmailpw.GMAILPW
-        }
+        },
+        tls: {
+    // do not fail on invalid certs
+    rejectUnauthorized: false
+  }
       });
       var mailOptions = {
         to: user.email,
@@ -337,7 +341,10 @@ app.post('/reset/:token',urlencoder,function (req,res) {
         auth:{
           user: 'stuffup.in@gmail.com',
           pass: keys.gmailpw.GMAILPW
-        }
+        },  tls: {
+      // do not fail on invalid certs
+      rejectUnauthorized: false
+    }
       });
       var mailOptions = {
         to: user.email,
