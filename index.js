@@ -286,7 +286,7 @@ app.post('/forgot',urlencoder,function(req,res,next){
         subject: 'Stuff Up Account Password Reset',
         text: 'Hey there,\n\nYou are receiving this beacuse you have requested for a change in password of your Stuff Up account.\n\n'+
         'Click on the following link provided below to complete the process of changing password.\n\n'+
-        'http://'+ 'stuffup.herokuapp.com'  + '/reset/' + token + '\n\n' +
+        'https://'+ 'stuffup.herokuapp.com'  + '/reset/' + token + '\n\n' +
         // Put our domain name instead of loacal host headers host
         'If you did not request any password change, Please ignore this message and your password would not be changed.\n\n'+
         'Your safety and security is priority concern'
