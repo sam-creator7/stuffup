@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Confirmation Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="path/to/bootstrap-tooltip.js"></script>
+<script type="text/javascript" src="path/to/bootstrap-confirmation.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<style>
+	.jumbotron{
+
+		width:85%;
+	}
+	.c1 {
+    width: 45%;
+	max-height:50%;
+    float: left;
+    background-color: #f6f6f6;
+}
+.c2 {
+    width: 45%;
+	max-height:50%;
+    float: right;
+    background-color: #f6f6f6;
+}
+
+@media (min-width:992px){
+
+.fl{
+	float:right;
+	margin-top:-28%;
+	margin-right:2%;
+
+
+}
+}
+@media (min-width:1450px){
+
+.fl{
+	float:right;
+	margin-top:-25%;
+	margin-right:2%;
+
+
+}
+}
+
+@media(max-width:700px){
+	.hor{
+		padding:5%;
+	}
+}
+
+#body{
+	padding-bottom:60px;
+}
+
+  .navbar {
+    margin-bottom: 0;
+
+    background-color: #222;
+    z-index: 9999;
+
+    font-size: 14px !important;
+    line-height: 1.42857143 !important;
+    line-height: 1.2 !important;
+    letter-spacing: 1px;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
+  }
+
+  .navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #f4511e !important;
+    background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+  }
+
+
+
+ #dropdown:hover .dropdown-menu{
+   display: block;
+
+ }
+
+
+ .dropdown-menu{
+   background-color: dimgrey;
+   color:white;
+   padding: 15px;
+
+ }
+
+
+
+@media(min-width:900px){
+.foot{
+	position:fixed;
+	bottom:0;
+	left:0;
+	width:100%;
+}
+}
+</style>
+
+    </head>
+    <body style="background-color:#000;">
+        <!--Navigation bar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom: 0px;">
+       <div class="container">
+
+       <div class="navbar-header">
+         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" href="#myPage" style="justify-content: center;">Stuff up</a>
+       </div>
+       <div class="collapse navbar-collapse" id="myNavbar">
+         <ul class="nav navbar-nav navbar-right">
+           <li><a href="home">Home</a></li>
+           <li><a href="home">Services</a></li>
+           <li><a href="home">Track Shipment</a></li>
+           <li><a href="home#about">About us</a></li>
+           <li><a href="home#contact">Contact us</a></li>
+           <li ><a href="login" id="li1"><% if(userinfo){ %> <%= userinfo.firstname %> <%} else if(user) {%><%= user.firstname %> <% }else{%>Login<%}%></a></li>
+           <li ><a  style="display:none" id="li2" href="#dashboard" id ="dropdown" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  ><% if(userinfo){ %> <%= userinfo.firstname %> <%} else if(user) {%><%= user.firstname %> <% }%><span class="caret"></span></a>
+
+           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+             <a class="dropdown-item" href="dashboard#profile">Profile</a><br><br>
+             <a class="dropdown-item" href="dashboard#order">Past Orders</a><br><br>
+             <a class="dropdown-item" href="dashboard#addresses">Addresses</a><br><br>
+             <a class="dropdown-item" href="dashboard#Billing">Payment Credentials</a><br><br>
+             <a class="dropdown-item" href="logout">Logout</a><br>
+           </div>
+         </li>
+         </ul>
+       </div>
+       </div>
+       </nav>
+
+       <script>
+       var data = document.getElementById("li1").innerHTML;
+       var loginbtn = document.getElementById("li1");
+       var data2 =document.getElementById("li2");
+
+       if (data !== "Login") {
+       loginbtn.style.display = 'none';
+       data2.style.display = 'block';
+       }
+       </script>
+
+
+
+	<div class="container jumbotron">
+
+
+		<h3><center><ul>Order Details</ul></center></h3>
+		<div style="background-color:#d3d3d3;padding:2%;">
+
+
+
+			<div style="display:inline;vertical-align:top;margin-left:5%">
+				<img style="height:25%; width:25%;"src="https://i.postimg.cc/pdMmC6Vg/Stuff-Up-in-Logo.jpg" alt="img"/>
+			</div>
+			<div  style="display:inline-block;margin-left:10%;">
+			<div><h5 style="float:left"> Delivery Agent : <b>FEDEX</b></h5></div>
+
+			<div><h5 style="float:left"> Order ID : <b>1XPO89VGTB645</b></h5></div>
+
+			<div><h5 style="float:left"> Order Content : <b>Furniture</b></h5></div>
+
+			<div><h5 style="float:left"> Order Date : <b>25th April , 2020</b></h5></div>
+
+			<div><h5 style="float:left"> Dimensions : <b>80cm x 40cm x 50cm</b></h5></div>
+
+			<div><h5 style="float:left"> Weight : <b>5.6 kilograms </b></h5></div>
+
+			<div><h5 style="float:left"> Pick Up : <b>Flat 6 , Sai Apt. , Pune </b></h5></div>
+
+			<div><h5 style="float:left"> Drop Off : <b>Flat 12 , Anand Apt. , Mumbai </b></h5></div>
+			</div>
+			</div>
+
+
+		<div class="fl" style="background-color:#d3d3d3;padding:2%">
+			<h4><center>Price Details</center></h4>
+		<br>
+
+
+
+			<h5 style="float:center"><center>Price :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;1000</center></h5>
+
+
+			<h5 style="float:center"><center>SGST(9%) :&nbsp; &nbsp;&nbsp;90</center></h5>
+
+
+			<h5 style="float:center"><center>CGST(9%) :&nbsp; &nbsp;&nbsp;90</center></h5>
+			<hr>
+
+			<h5 style="float:center"><center><b>TOTAL : &nbsp; &nbsp; 1180</b></center></h5>
+
+			</div>
+
+
+		<center><button type="submit" class="btn btn-success">Proceed To Pay</button></center>
+
+		</div>
+		<div>
+		<br>
+		<br>
+		</div>
+
+
+
+
+
+        <!--footer-->
+
+        <!--footer bar -->
+
+            <footer>
+                <div class="navbar navbar-inverse navbar-navbar-hide-on-scroll">
+                <div class="container-fluid text-center ">
+                  <p class="copyright" style="font-size:14px ; color:white" >Stuffup © 2020</p>
+                </div>
+
+                <a id="back-to-top" href="#" class="btn btn btn-lg back-to-top" role="button" title="Click to return on the top page" style="float: right;" data-toggle="tooltip" data-placement="left
+               "><span class="glyphicon glyphicon-chevron-up"></span></a>
+                </div>
+            </footer>
+
+    </body>
+</html>

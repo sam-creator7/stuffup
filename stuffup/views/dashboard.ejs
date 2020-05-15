@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/public/assets/dashboard.css">
+    </head>
+
+<style>
+    @media (max-width:783px){
+        .confirm {
+
+
+            position: absolute;
+            top: 100px;
+            padding-left: 18px;
+            font-size: 14px;
+            color : #686b78
+
+            }
+
+
+   }
+
+   @media (max-width:380px)
+   {
+    .view-account .side-bar .side-menu .nav>li {
+    font-size: 14px;
+    margin-bottom: 0;
+
+    display: inline-block;
+
+     margin-right:0;
+    margin-bottom: 15px;
+}
+
+
+   }
+.delbtn {
+
+color: #222;
+
+font-weight: 600;
+
+font-size: 14px;
+
+margin-right: 20px;
+
+letter-spacing: -.3px;
+
+position: absolute;
+
+top: 26px;
+
+right: 0;
+
+cursor: pointer
+
+}
+
+ .dlt{
+    color: #222;
+
+font-weight: 600;
+
+font-size: 14px;
+letter-spacing: -.3px;
+
+   }
+
+
+
+.addressblock {
+    border: 2px solid #d4d5d9;
+    padding: 20px;
+    position: relative;
+    width: auto;
+    display: inline-block;
+    color: #3d4152;
+    display: -ms-flexbox;
+    display: flex;
+}
+.sec_1 {
+
+	display: -ms-flexbox;
+
+	display: block;
+
+	margin-top: 35px;
+	width: auto;
+
+}
+
+</style>
+    <body>
+
+     <nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom: 0px;">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#myPage">Stuff up</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="home">Home</a></li>
+        <li><a href="home">Services</a></li>
+        <li><a href="#tracking">Track Shipment</a></li>
+        <li><a href="home#about">About us</a></li>
+        <li><a href="home#contact">Contact us</a></li>
+        <li><a href="logout">Logout</a></li>
+      </ul>
+    </div>
+
+  </div>
+         </nav>
+
+
+
+<br><br><br><br>
+        <div class="container" >
+
+    <div class="view-account">
+        <section class="module">
+            <div class="module-inner">
+                <div class="side-bar">
+                    <div class="user-info">
+                       <br>
+                        <img class="img-profile img-circle img-responsive center-block"src="https://i.postimg.cc/Qd1tFJgS/undraw-profile-pic-ic5t.png" alt="">
+                        <ul class="meta list list-unstyled">
+                          <li class="name"><% if(userinfo){ %> <%= userinfo.firstname %> <%} else if(user) {%><%= user.firstname %> <% }%></li>
+                      </ul>
+                    </div>
+            		<nav class="side-menu">
+        				<ul class="nav">
+                  <li ><a href="#profile"><span class="fa fa-user"></span> Profile</a></li>
+        					<li><a href="#order"><span class="fa fa-shopping-cart"></span> Orders</a></li>
+        					<li><a href="#Billing"><span class="fa fa-credit-card"></span> Billing</a></li>
+        					<li><a href="#addresses"><span class="fa fa-address-card"></span> Addresses</a></li>
+        				</ul>
+        			</nav>
+                </div>
+                <script>
+
+                let pages = document.querySelectorAll(".page");
+                for(let i=0;i<pages.length;++i){
+                  pages[i].style.display = 'none';
+                }
+
+
+                window.onhashchange = function(){
+                  render(window.location.hash);
+                };
+
+                function render(hashkey) {
+                  //first hide all divs
+                  let pages = document.querySelectorAll(".page");
+                  for(let i=0;i<pages.length;++i){
+                    pages[i].style.display = 'none';
+                  }
+
+                  //unhide which user selects
+                  switch (hashkey) {
+                    case "":pages[0].style.display = 'block';
+                      break;
+                      case "#profile":pages[0].style.display = 'block';
+                        break;
+                        case "#order":pages[1].style.display = 'block';
+                          break;
+                          case "#Billing":pages[2].style.display = 'block';
+                            break;
+                            case "#addresses":pages[3].style.display = 'block';
+                              break;
+
+                    default:pages[0].style.display = 'block';
+
+
+                  }
+
+                }
+                </script>
+
+                <br>
+                <div class="page" id=profilepage>
+                <div  class="content-panel">
+                    <form class="form-horizontal">
+                        <fieldset class="fieldset">
+                            <h3 class="fieldset-title">Personal Info</h3>
+                            <div class="form-group avatar">
+
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <p type="text" class="form-control" name="firstname"><% if(userinfo){ %> <%= userinfo.firstname %> <%} else if(user) {%><%= user.firstname %> <% }%></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <p type="text" class="form-control" name="lastname" ><% if(userinfo){ %> <%= userinfo.lastname %> <%} else if(user) {%><%= user.lastname %> <% }%></p>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="fieldset">
+                            <h3 class="fieldset-title">Contact Info</h3>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                     <input type="email" class="form-control" name="email" value="<% if(userinfo){ %> <%= userinfo.email %> <%} else if(user) {%><%= user.email %> <% }%>">
+                                      <p class="help-block">Tap to edit email </p>
+
+                                      <input class="btn btn-primary" type="submit" value="Verify Email">
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Phone</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="tel" class="form-control" name="phoneno" value="<% if(userinfo){ %> <%= userinfo.phoneno %> <%} else if(user) {%><%= user.phoneno %> <% }%>">
+                                    <p class="help-block">Tap to edit Phone Number</p>
+
+                                    <input class="btn btn-primary" type="submit" value="Add Phone Number">
+
+
+                                </div>
+                            </div>
+                                    </fieldset>
+
+
+                    </form>
+                </div>
+              </div>
+
+
+                <!-- its order details code from here -->
+<!--
+                <div  class="content-panel">
+                    <form class="form-horizontal">
+                        <fieldset class="fieldset">
+                            <h3 class="fieldset-title">Orders</h3>
+
+                                       <div class="block">
+                                          <div class="align">
+                                             <div class="orderimg"><img  height="200" width="300" alt="" src=""></div>
+
+                                              <div class="align1 ">
+                                                <div class="orderid ">ORDER #70796938018</div>
+                                                <input class="detailsbtn " type="submit" value="view details">
+
+                                                <div class="confirm"><span>Delivered  <i class="fa fa-check-circle" aria-hidden="true"></i></span></div>
+                                             </div>
+
+
+
+                                             </div>
+                                          </div>
+
+                                    </div>
+
+
+                                       <div class="block">
+                                          <div class="align">
+                                             <div class="orderimg"><img  height="200" width="300" alt="" src=""></div>
+                                             <div class="align1">
+                                                <div class="orderid">ORDER #70796938018</div>
+                                                <input class="detailsbtn " type="submit" value="view details">
+
+                                                <div class="confirm"><span>Not Delivered  <i class="fa fa-ban" aria-hidden="true"></i></span></div>
+                                             </div>
+                                          </div>
+                                       </div>
+
+                        </fieldset>
+                    </form>
+                </div> -->
+
+                <div class="page" id=orderpage style="display:none">
+              <br>
+
+                                    <div  class="content-panel">
+                                        <form class="form-horizontal">
+                                            <fieldset class="fieldset">
+                                                <h3 class="fieldset-title">Orders</h3>
+                                                        <div>
+                                                           <div class="block">
+                                                              <div class="align">
+                                                                 <div class="orderimg"><img  height="200" width="300" alt="" src=""></div>
+                                                                 <div class="align1">
+                                                                    <div class="orderid">ORDER #70796938018</div>
+                                                                    <input class="detailsbtn " type="submit" value="view details">
+
+                                                                    <div class="confirm"><span>Delivered  <i class="fa fa-check-circle" aria-hidden="true"></i></span></div>
+                                                                 </div>
+                                                              </div>
+                                                           </div>
+                                                        </div>
+
+                                                        <div>
+                                                           <div class="block">
+                                                              <div class="align">
+                                                                 <div class="orderimg"><img  height="200" width="300" alt="" src=""></div>
+                                                                 <div class="align1">
+                                                                    <div class="orderid">ORDER #70796938018</div>
+                                                                    <input class="detailsbtn " type="submit" value="view details">
+
+                                                                    <div class="confirm"><span>Not Delivered  <i class="fa fa-ban" aria-hidden="true"></i></span></div>
+                                                                 </div>
+                                                              </div>
+                                                           </div>
+                                                        </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                    </div>
+
+
+                <!-- till here order details html code-->
+
+                <!-- its payment details code from here -->
+
+
+                  <div  class="page" id=billingpage style="display:none">
+                <br>
+                <div  class="content-panel">
+                    <form class="form-horizontal">
+                        <fieldset class="fieldset">
+                            <h3 class="fieldset-title">Payments</h3>
+
+
+
+                            <div class="block1">
+                            <div class="head1">Saved Cards</div>
+                            <div class="sec1">
+
+                                <!--first card html-->
+
+                                <!-- <div class="cardblock">
+                                    <div class="cardblock1">
+                                    <div class="image1">
+                                    <img class="imgedit ed" height="30" width="43" alt="" src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,g_center,c_crop,w_112,h_73/Rupay_l3lnhg">
+                                    </div>
+                                    <div class="carddet">
+                                    <div> xxxx-XXXXXXXX-xxxx </div>
+                                    <div class="validdet">
+                                    <div>Valid till xx/xxxx</div>
+                                   </div>
+                                   <input class="delbtn " type="submit" value=" DELETE">
+                                    </div>
+
+                                    </div>
+                                 </div> -->
+
+                                 <div class="cardblock">
+                                     <div class="cardblock1">
+                                        <div class="image1 ">
+                                            <img class="imgedit ed" height="30" width="43" alt="" src="https://i.postimg.cc/mk4DNzbC/visa.jpg">
+                                         </div>
+
+                                         <div class="row" style="float:none;margin:0">
+
+                                             <div class="carddet col" >
+                                                 <div class="row" style="float:0;margin:0 auto;">xxxx-XXXXXXXX-xxxx </div>
+                                                 <div class="row" style="float:0;margin:0 auto;">Valid till xx/xxxx</div>
+                                                <br> <div class="row" style="float:0;margin:0 auto;"><input type="submit" class="dlt" value="DELETE"> </div>
+                                            </div>
+
+                                             <!-- <div class="delbtn col"><input type="submit" value="DELETE"> </div> -->
+                                         </div>
+                                     </div>
+                                 </div>
+
+
+
+                                <!--second card html-->
+
+                                <!-- <div class="cardblock">
+                                    <div class="cardblock1">
+                                        <div class="image1">
+                                        <img class="imgedit ed" height="30" width="43" alt="" src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,g_center,c_crop,w_112,h_73/visa_card_htg4op">
+                                        </div>
+                                        <div class="carddet">
+                                        <div> xxxx-XXXXXXXX-xxxx </div>
+                                        <div class="validdet">
+                                        <div>Valid till xx/xxxx</div>
+                                        </div>
+                                        </div>
+                                        <input class="delbtn " type="submit" value=" DELETE">
+
+                                    </div>
+                                </div> -->
+
+                                <div class="cardblock">
+                                    <div class="cardblock1">
+                                       <div class="image1 ">
+                                           <img class="imgedit ed" height="30" width="43" alt="" src="https://i.postimg.cc/SsCRM7pm/rupay.png">
+                                        </div>
+
+                                        <div class="row" style="float:none;margin:0">
+
+                                            <div class="carddet col" >
+                                                <div class="row" style="float:0;margin:0 auto;">xxxx-XXXXXXXX-xxxx </div>
+                                                <div class="row" style="float:0;margin:0 auto;">Valid till xx/xxxx</div>
+                                               <br> <div class="row" style="float:0;margin:0 auto;"><input type="submit" class="dlt" value="DELETE"> </div>
+                                           </div>
+
+                                            <!-- <div class="delbtn col"><input type="submit" value="DELETE"> </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                          </div>
+                         </div>
+                       </fieldset>
+                    </form>
+                </div>
+              </div>
+
+                <!-- till here order details html code-->
+
+
+                  <div class="page" id=addresspage style="display:none">
+                <br>
+                <div  class="content-panel">
+                    <form class="form-horizontal">
+                        <fieldset class="fieldset">
+                            <h3 class="fieldset-title">Addresses</h3>
+
+                            <div class="block1">
+                             <div>
+                                <div>
+                                 <div class="head1">Manage Addresses</div>
+                                    <div class="sec_1 " >
+
+                                        <div  class="row">
+
+                                            <div class ="col-lg-5">
+                                                <div class="addressblock  ">
+                                                    <div class="image_1">
+                                                        <i class="fa fa-home" aria-hidden="true"></i>
+                                                    </div>
+                                                    <div>
+                                                    <div class="addressdetails">Home</div>
+                                                    <div class="addressdetails1"> Rajahmundry, Andhra Pradesh 533103, India</div>
+                                                    <input class="deletebtn" type="submit" value="DELETE">
+                                                    </div>
+                                                    </div>
+                                            </div>
+                                            <div class="col-lg-1 "><br></div>
+                                            <div class="col-lg-5 ">
+                                                <div class="addressblock  ">
+                                                    <div class="image_1">
+                                                   <i class="fa fa-briefcase" aria-hidden="true"></i>
+                                                   </div>
+                                                   <div>
+                                                   <div class="addressdetails">Work</div>
+                                                   <div class="addressdetails1">Pune, Maharashtra 411038, India</div>
+                                                   <input class="deletebtn " type="submit" value="DELETE">
+
+                                                   </div>
+                                                   </div>
+
+                                            </div>
+                                        </div>
+
+
+
+                                    <!-- <div class="addressblock col ">
+                                    <div class="image_1">
+                                        <i class="fa fa-home" aria-hidden="true"></i>
+                                    </div>
+                                    <div>
+                                    <div class="addressdetails">Home</div>
+                                    <div class="addressdetails1"> Rajahmundry, Andhra Pradesh 533103, India</div>
+                                    <input class="deletebtn" type="submit" value="DELETE">
+                                    </div>
+                                    </div>
+
+                                    <div class="addressblock col ">
+                                     <div class="image_1">
+                                    <i class="fa fa-briefcase" aria-hidden="true"></i>
+                                    </div>
+                                    <div>
+                                    <div class="addressdetails">Work</div>
+                                    <div class="addressdetails1">Pune, Maharashtra 411038, India</div>
+                                    <input class="deletebtn " type="submit" value="DELETE">
+
+                                    </div>
+                                    </div> -->
+
+
+
+                                    </div>
+                 </div>
+           </div>
+       </div>
+
+
+                       </fieldset>
+                    </form>
+                </div>
+            </div>
+          </div>
+        </section>
+    </div>
+</div>
+
+<!--footer bar -->
+
+    <footer>
+        <div class="navbar navbar-inverse navbar-navbar-hide-on-scroll">
+        <div class="container-fluid text-center ">
+          <p class="copyright" style="font-size: 14px" >Stuffup © 2020</p>
+        </div>
+
+        <a id="back-to-top" href="#" class="btn btn btn-lg back-to-top" role="button" title="Click to return on the top page" style="float: right;" data-toggle="tooltip" data-placement="left
+       "><span class="glyphicon glyphicon-chevron-up"></span></a>
+        </div>
+    </footer>
+
+
+</body>
+</html>

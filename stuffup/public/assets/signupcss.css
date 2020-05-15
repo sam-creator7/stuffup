@@ -1,0 +1,133 @@
+.login-form {
+		width: 340px;
+    	margin: 30px auto;
+	}
+    .login-form form {
+    	margin-bottom: 15px;
+        margin-top: 100px;
+        background: #f7f7f7;
+        box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .login-form .hint-text {
+		color: #777;
+		padding-bottom: 15px;
+		text-align: center;
+    }
+    .form-control  {
+        min-height: 38px;
+        border-radius: 10px;
+        width: 275px;
+    }
+    .btn{
+       min-height: 38px;
+        border-radius: 10px;
+    }
+    .login-btn {
+        font-size: 15px;
+        font-weight: bold;
+    }
+    .or-seperator {
+        margin: 20px 0 10px;
+        text-align: center;
+        border-top: 1px solid #ccc;
+    }
+    .or-seperator i {
+        padding: 0 10px;
+        background: #f7f7f7;
+        position: relative;
+        top: -11px;
+        z-index: 1;
+    }
+    .social-btn .btn {
+        margin: 10px 0;
+        font-size: 15px;
+        text-align: left;
+        line-height: 24px;
+    }
+	.social-btn .btn i {
+		float: left;
+		margin: 4px 15px  0 5px;
+        min-width: 15px;
+	}
+	.input-group-addon .fa{
+		font-size: 18px;
+	}
+        body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+    color: #818181;
+  }
+
+	  .navbar {
+	    margin-bottom: 0;
+
+	    background-color: #222;
+	    z-index: 9999;
+
+	    font-size: 14px !important;
+	    line-height: 1.42857143 !important;
+	    line-height: 1.2 !important;
+	    letter-spacing: 1px;
+	    border-radius: 0;
+	    font-family: Montserrat, sans-serif;
+	  }
+
+	  .navbar li a, .navbar .navbar-brand {
+	    color: #fff !important;
+	  }
+	  .navbar-nav li a:hover, .navbar-nav li.active a {
+	    color: #f4511e !important;
+	    background-color: #fff !important;
+	  }
+	  .navbar-default .navbar-toggle {
+	    border-color: transparent;
+	    color: #fff !important;
+	  }
+ back-to-top {
+	 cursor: pointer;
+	 position: fixed;
+	 bottom: 20px;
+	 left: 20px;
+	 display:none;
+	 float: right;
+
+}
+.btn1{
+	 color: black;
+
+}
+
+.btn{
+	 color: white;
+
+}
+.btn:hover{
+	 color: white;
+}
+
+
+  h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #303030;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    color: #303030;
+    font-weight: 400;
+    margin-bottom: 30px;
+  }
+
+  .container-fluid {
+    padding: 60px 50px;
+  }
+  .bg-grey {
+    background-color: #f6f6f6;
+  }

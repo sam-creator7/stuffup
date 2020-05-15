@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap Sign in Form with Social Login Buttons</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/public/assets/login.css">
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50" onload='document.form.email.focus()'>
+
+ <!--Navigation bar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#myPage">Stuff up</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="home">Home</a></li>
+        <li><a href="#Services">Services</a></li>
+        <li><a href="#tracking">Track Shipment</a></li>
+        <li><a href="#about">About us</a></li>
+        <li><a href="#contact">Contact us</a></li>
+        <li><a href="/login">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+function ValidateEmail(inputText)
+{
+  var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if(inputText.value.match(mailformat))
+  {
+  document.form.email.focus();
+  return true;
+  }
+  else
+  {
+  alert("You have entered an invalid email address!");
+  document.form.email.focus();
+  return false;
+  }
+
+}
+
+
+	</script>
+
+ <!--Login form  -->
+
+
+<div class="login-form">
+    <form action="/login" method="post">
+        <h2 class="text-center">Sign in</h2>
+        <div class="text-center social-btn">
+
+	<a href="/auth/google" class="btn btn-danger btn-block"><i class="fa fa-google"></i> Sign in with <b>Google</b></a>
+        </div>
+
+        <div class="or-seperator"><i>or</i></div>
+
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control" name="email" placeholder="Email" required="required">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success btn-block login-btn" onclick="ValidateEmail(document.form.email)">Sign in</button>
+        </div>
+
+
+        <div class="clearfix">
+            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+            <a href="/forgot" class="pull-right text-success">Forgot Password?</a>
+            <label style="color:red;" ><%if (messages.errorMessage) {%><%= messages.errorMessage%><%}else if(messages.successMessage) {%><%= messages.successMessage %><%}
+               %></label>
+        </div>
+
+    </form>
+    <div class="hint-text small">Don't have an account? <a href="/signup" class="text-success">Register Now!</a></div>
+
+
+</div>
+
+
+<!--footer bar -->
+<footer>
+        <div class="navbar navbar-inverse navbar-navbar-hide-on-scroll">
+        <div class="container-fluid text-center ">
+          <p class="copyright" style="font-size: 14px" >Stuffup © 2020</p>
+        </div>
+
+        <a id="back-to-top" href="#" class="btn btn btn-lg back-to-top" role="button" title="Click to return on the top page" style="float: right;" data-toggle="tooltip" data-placement="left
+       "><span class="glyphicon glyphicon-chevron-up"></span></a>
+        </div>
+    </footer>
+</body>
+</html>

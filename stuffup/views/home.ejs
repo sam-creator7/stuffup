@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>Bootstrap</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="/public/assets/newcss.css">
+
+<script src="js/homejs.js"></script>
+
+
+</head>
+<body style="overflow-x: hidden" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<script>
+
+		function ValidateEmail(inputText)
+		{
+			var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			if(inputText.value.match(mailformat))
+			{
+			document.email.focus();
+			return true;
+			}
+			else
+			{
+			alert("You have entered an invalid email address!");
+			document.email.focus();
+			return false;
+			}
+
+		}
+
+	</script>
+
+
+
+<!--Navigation bar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#myPage">Stuffup</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="home">Home</a></li>
+        <li><a href="home">Services</a></li>
+        <li><a href="home">Track Shipment</a></li>
+        <li><a href="home#about">About us</a></li>
+        <li><a href="home#contact">Contact us</a></li>
+        <li ><a href="login" id="li1"><% if(userinfo){ %> <%= userinfo.firstname %> <%} else if(user) {%><%= user.firstname %> <% }else{%>Login<%}%></a></li>
+        <li ><a  style="display:none" id="li2" href="#dashboard" id ="dropdown" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  ><% if(userinfo){ %> <%= userinfo.firstname %> <%} else if(user) {%><%= user.firstname %> <% }%><span class="caret"></span></a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+          <a class="dropdown-item" href="dashboard#profile">Profile</a><br><br>
+          <a class="dropdown-item" href="dashboard#order">Past Orders</a><br><br>
+          <a class="dropdown-item" href="dashboard#addresses">Addresses</a><br><br>
+          <a class="dropdown-item" href="dashboard#Billing">Payment Credentials</a><br><br>
+          <a class="dropdown-item" href="logout">Logout</a><br>
+        </div>
+      </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+var data = document.getElementById("li1").innerHTML;
+var loginbtn = document.getElementById("li1");
+var data2 =document.getElementById("li2");
+
+if (data !== "Login") {
+loginbtn.style.display = 'none';
+data2.style.display = 'block';
+}
+</script>
+
+
+<div class="sticky-container">
+    <ul class="sticky">
+
+          <li>
+            <a href="https://www.instagram.com/stuffup.in/" target="_blank">
+            <img src="https://cdn0.iconfinder.com/data/icons/social-media-circle-6/1024/instagram-512.png" width="32" height="32" >
+            <p>Follow Us on<br>Instagram</p></a>
+        </li>
+
+        <li>
+          <a href="https://www.facebook.com/stuffup.in/" target="_blank">
+          <img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-512.png" width="32" height="32">
+          <p>Like Us on<br>Facebook</p></a>
+      </li>
+
+      <li>
+        <a href="https://www.linkedin.com/company/stuffup-in/" target="_blank">
+        <img src="https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-linkedin-circle-512.png" width="32" height="32">
+        <p>Follow Us on<br>LinkedIn</p> </a>
+    </li>
+
+       <!-- <li>
+            <img src="https://cdn0.iconfinder.com/data/icons/social-media-circle-6/1024/instagram-512.png" width="32" height="32"  >
+            <p><a href="https://www.instagram.com/stuffup.in/" target="_blank">Follow Us on<br>Instagram</a></p>
+        </li>
+        <li>
+            <img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-512.png" width="32" height="32">
+            <p><a href="https://www.facebook.com/stuffup.in/" target="_blank">Like Us on<br>Facebook</a></p>
+        </li>
+        <li>
+            <img src="https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-linkedin-circle-512.png" width="32" height="32">
+            <p><a href="https://www.linkedin.com/company/stuffup-in/" target="_blank">Follow Us on<br>LinkedIn</a></p>
+        </li> -->
+
+    </ul>
+</div>
+<br><br>
+<div style="background-image:linear-gradient(to bottom,#818181,#686868,#9B9B9B,#D1D1D1,#F6F6F6) ">
+
+<div class="row no-gutters">
+
+<div class="bg-image col-lg-5 hidden-md hidden-sm hidden-xs">
+
+            <div class="loop-wrapper" style="float: left;margin-top: 140px;margin-left: 50px">
+  <div class="mountain"></div>
+  <div class="hill"></div>
+  <div class="tree"></div>
+  <div class="tree"></div>
+  <div class="tree"></div>
+  <div class="rock"></div>
+  <div class="truck" style="font-size: 14px;;padding-top: 3px;text-align: left;padding-left: 4px;">StuffUp</div>
+  <div class="wheels" style="padding-left: 2px;"></div>
+</div>
+</div>
+
+<div class=" col-lg-1 hidden-md hidden-sm hidden-xs"></div>
+
+<div class="formmain col-lg-5 col-xs">
+
+    <form action="list">
+        <br>
+                <div class="head-wrapper text-center">
+                <h4 class=" ">Shipment Details</h4>
+
+                </div>
+
+
+                <div class="form-inline">
+
+                    <div class="row1 row">
+
+                    <input type="text" class="form-control col  text-center " id ="element" placeholder="Pickup From">
+                    <span style="padding-left:15px;"></span>
+                     <input type="text" class="form-control col  text-center " id ="element" placeholder="Deliver To">
+
+                    </div>
+
+                    <br>
+                    <div class="Details" >
+
+
+                        <div class="row2 row">
+                            <input type="text" class="form-control col  text-center  " id ="element" placeholder="Category">
+                            <span style="padding-left:15px;"></span>
+                            <input type="text" class="form-control col  text-center " id ="element" placeholder="Sub-Category">
+
+                        </div>
+
+                        <br>
+                        <p  class="text-center" style="font-size: 18px;font-family: Candara; color: black">Weight and dimensions</p>
+                        <br>
+                        <div class="row4 row">
+
+                              <input type="text" class="form-control col  text-center " id ="element" placeholder="Weight (in Kg)">
+                             </div>
+                        <br>
+                        <br>
+                        <div class="row5 row">
+                            <div class="input-group text-center ">
+
+
+                                <input type="text" class="form-control text-center " id ="element1" placeholder="Length">
+                                <input type="text" class="form-control text-center " id ="element1" placeholder="Breadth">
+                                <input type="text" class="form-control text-center " id ="element1" placeholder="Height">
+                            </div>
+                        </div>
+
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success" id="btn">Search courier partner</button>
+                        <br>
+                        <br>
+                    </div>
+
+            </form>
+                </div>
+
+</div>
+</div>
+
+
+
+
+
+
+<!-- Container (About Section) -->
+
+
+<div id="about" class="container-fluid bg-grey">
+  <div class="row">
+      <div class="jumbotron text-center">
+<a > <img style="border-radius:15px;width:45%;height:15%" src='https://i.postimg.cc/L6WQ0z1t/try1.jpg' border='0' alt='Stuff-Up-in-Logo-1'/></a>
+
+
+
+</div>
+    <div class="col-sm-4">
+
+       <span class="glyphicon glyphicon-globe logo slideanim"></span>
+    </div>
+
+    <div class="col-sm-8">
+      <h2>Our values</h2><br>
+      <h4><strong>MISSION:</strong> As we move towards our goal of being a world-class university, we will support research on a global scale. Locally, our campus will service the research needs of the learning community, granting access to many informational resources.As we move towards our goal of being a world-class university, we will support research on a global scale. Locally, our campus will service the research needs of the learning community, granting access to many informational resources.As we move towards our goal of being a world-class university, we will support research on a global scale. Locally, our campus will service the research needs of the learning community, granting access to many informational resources.</h4><br>
+      <h4><strong>VISION:</strong> As we move towards our goal of being a world-class university, we will support research on a global scale. Locally, our campus will service the research needs of the learning community, granting access to many informational resources.As we move towards our goal of being a world-class university, we will support research on a global scale. Locally, our campus will service the research needs of the learning community, granting access to many informational resources.As we move towards our goal of being a world-class university, we will support research on a global scale. Locally, our campus will service the research needs of the learning community, granting access to many informational resources.</h4>
+    </div>
+
+      <!-- Container (Contact Section) -->
+      <form action="/feedback" method="post">
+      <div id="contact" class="container-fluid bg-grey">
+      <h2 class="text-center">CONTACT</h2><br>
+  <div class="row">
+    <div class="col-sm-5">
+      <h4>Contact us and we'll get back to you within 24 hours.</h4>
+      <h4><span class="glyphicon glyphicon-map-marker"></span> India</h4>
+      <h4><span class="glyphicon glyphicon-phone"></span> +91 9999999999</h4>
+      <h4><span class="glyphicon glyphicon-envelope"></span> reach@stuffup.in</h4>
+    </div>
+    <div class="col-sm-7 slideanim">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="conname" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="conemail" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea  maxlength="1000" class="form-control" id="comments" name="comments" placeholder="Comment(maximum 1000 letters)" rows="5"></textarea><br>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <button class="btn1 pull-right" type="submit" onclick="ValidateEmail(document.email)">Send</button>
+        </div>
+      </div>
+      <label style="color:red;" ><%if (messages.errorMessage) {%><%= messages.errorMessage%><%}else if(messages.successMessage) {%><%= messages.successMessage %><%}
+         %></label>
+    </div>
+  </div>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+
+
+
+<!--footer bar -->
+
+    <footer>
+        <div class="navbar navbar-inverse navbar-navbar-hide-on-scroll">
+        <div class="container-fluid text-center ">
+          <p class="copyright" style="font-size: 14px" >Stuffup © 2020</p>
+        </div>
+
+        <a id="back-to-top" href="#" class="btn btn btn-lg back-to-top" role="button" title="Click to return on the top page" style="float: right;" data-toggle="tooltip" data-placement="left
+       "><span class="glyphicon glyphicon-chevron-up"></span></a>
+        </div>
+    </footer>
+
+
+
+</body>
+</html>
