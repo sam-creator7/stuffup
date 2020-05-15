@@ -269,8 +269,7 @@ app.post('/forgot',urlencoder,function(req,res,next){
     function (token,user,done) {
       var smtpTransport = nodemailer.createTransport({
         host: 'smtp.gmail.com',
-        pool:true,
-        port: process.env.PORT||3000,
+        port: 587,
         secure: false,
         service: 'Gmail',
         auth:{
@@ -352,7 +351,7 @@ app.post('/reset/:token',urlencoder,function (req,res) {
       var smtpTransport = nodemailer.createTransport({
         service: 'Gmail',
         host: 'smtp.gmail.com',
-        port: process.env.PORT||3000,
+        port: 587,
         secure: false,
         auth:{
           user: 'stuffup.in@gmail.com',
